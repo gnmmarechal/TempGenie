@@ -1,0 +1,9 @@
+trivia - I will bless you with random trivia
+ha - GAYYYYYYYYYYYY!
+hello - I will greet you
+quote - I will bless you with great knowledge
+all_quotes - I will blast you away with a huge amount of great knowledge
+add_quote <quote> - I will add a quote to my library
+add_trivia <trivia> - I will add trivia to my library
+kill - I will die :(
+man - I will tell you what I am telling you now
