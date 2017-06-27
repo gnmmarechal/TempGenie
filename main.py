@@ -123,9 +123,11 @@ async def add_quote(*args):
         final_quote += str(arg) + " "
     final_quote = final_quote[:-1]
     print("Adding quote: " + final_quote)
-    if not quote_exists(final_quote, "quotes.txt"):
+    if not quote_exists(final_quote, "quotes.txt") and "TempGenie" not in final_quote:
         await my_bot.say("Adding quote: \"" + final_quote + "\"")
         add_text(final_quote, "quotes.txt")
+    elif "TempGenie" in final_quote:
+        await my_bot.say("You're not going to say things about me. 'kay?")
     else:
         await my_bot.say("Quote already exists!")
 
@@ -138,9 +140,11 @@ async def add_trivia(*args):
         final_quote += str(arg) + " "
     final_quote = final_quote[:-1]
     print("Adding trivia: " + final_quote)
-    if not quote_exists(final_quote, "trivia.txt"):
+    if not quote_exists(final_quote, "trivia.txt") and "TempGenie" not in final_quote:
         await my_bot.say("Adding trivia: \"" + final_quote + "\"")
         add_text(final_quote, "trivia.txt")
+    elif "TempGenie" in final_quote:
+        await my_bot.say("You're not going to say things about me. 'kay?")
     else:
         await my_bot.say("Quote already exists!")
 
