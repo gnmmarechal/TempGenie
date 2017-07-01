@@ -57,7 +57,18 @@ async def hello():
 # Makes the bot reply "GAY"
 @my_bot.command()
 async def ha():
-    return await my_bot.say("GAYYYYYYYYYYYYYYYYYYYYYYYYYY!")
+    reply = "GA"
+    i = random.randint(0, 90)
+    while i > 0:
+        reply += "Y"
+        i -= 1
+    reply += "!"
+    return await my_bot.say(reply)
+
+
+@my_bot.command()
+async def f(alias="F"):
+    return await my_bot.say("Paying respects...")
 
 
 # Makes the bot reply "Hello" followed by a the arguments
@@ -68,19 +79,19 @@ async def test(*args):
 
 # Makes the bot say a random quote
 @my_bot.command()
-async def quote():
+async def quote(alias="q"):
     return await my_bot.say(get_from_list("quotes.txt"))
 
 
 # Makes the bot say random trivia
 @my_bot.command()
-async def trivia():
+async def trivia(alias="t"):
     return await my_bot.say(get_from_list("trivia.txt"))
 
 
 # Makes the bot reply with all available quotes
 @my_bot.command()
-async def all_quotes():
+async def all_quotes(alias="aq"):
     quotes = []
     with open("quotes.txt") as f:
         quotes = f.read().splitlines()
@@ -110,7 +121,7 @@ async def sleep():
 
 # Kills the bot
 @my_bot.command()
-async def kill():
+async def kill(alias="die"):
     await my_bot.say(get_from_list("mercy.txt"))
     sys.exit()
 
