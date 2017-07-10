@@ -67,6 +67,11 @@ async def ha():
 
 
 @my_bot.command()
+async def cerise():
+    return await my_bot.say("weeb")
+
+
+@my_bot.command()
 async def f(alias="F"):
     return await my_bot.say("Paying respects...")
 
