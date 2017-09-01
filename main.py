@@ -88,6 +88,55 @@ async def quote(alias="q"):
     return await my_bot.say(get_from_list("quotes.txt"))
 
 
+# Makes the bot wofl wofl
+@my_bot.command()
+async def wofl():
+	reply = "wofl"
+	i = random.randint(0, 35)
+	while i > 0:
+		reply += " wofl"
+		i -= 1
+	reply += "!"
+	return await my_bot.say(reply)
+
+
+# Senpai no baka!
+@my_bot.command()
+async def baka():
+	number_of_bakas = random.randint(1, 31)
+	str1 = "b"
+	for baka in range(number_of_bakas - 1):
+		a1 = random.randint(1,11)
+		for a in range(a1):
+			str1 += "a"
+		str1 += "k"
+		a2 = random.randint(1,11)
+		for a in range(a2):
+			str1 += "a"
+		str1 += " b"
+	a1 = random.randint(1,11)
+	a2 = random.randint(1,11)
+	for a in range(a1):
+		str1 += "a"
+	str1 += "k"
+	for a in range(a2):
+		str1 += "a"
+	str1 += "!"
+	return await my_bot.say(str1)
+	
+	
+# Makes the bot shrug
+@my_bot.command()
+async def shrug():
+	return await my_bot.say("https://media.discordapp.net/attachments/329063968570081281/353170075479441409/Untitled-6.gif")
+	
+
+# Makes the bot shrug
+@my_bot.command()
+async def halp():
+	return await my_bot.say("https://www.youtube.com/watch?v=pgnO_Mbmns4")
+	
+
 # Makes the bot say random trivia
 @my_bot.command()
 async def trivia(alias="t"):
