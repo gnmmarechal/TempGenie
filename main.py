@@ -84,27 +84,59 @@ async def test(*args):
 
 # Makes the bot say a random quote
 @my_bot.command()
-async def quote(alias="q"):
-    return await my_bot.say(get_from_list("quotes.txt"))
+async def quote(number = 1):
+	if number < 1:
+		number = 1
+	for number in range(0, number):
+		await my_bot.say(get_from_list("quotes.txt"))
+	
+	return
+    
+    
+# Makes the bot say a random quote
+async def tts_quote():
+    return await my_bot.say("/tts " + str(get_from_list("quotes.txt")))
+
 
 
 # Makes the bot wofl wofl
 @my_bot.command()
 async def wofl():
+	pofl_gen = random.randint(0, 100)
+	is_pofl = False
+	if pofl_gen < 5:
+		is_pofl = True
+	
 	reply = "wofl"
+	if is_pofl:
+		reply = "pofl"
 	i = random.randint(0, 35)
 	while i > 0:
-		reply += " wofl"
+		if is_pofl:
+			reply += " pofl"
+		else:
+			reply += " wofl"
 		i -= 1
 	reply += "!"
 	return await my_bot.say(reply)
 
+# No pofl for you
+@my_bot.command()
+async def pofl():
+	return await my_bot.say("No pofl for you!")
 
 # Senpai no baka!
 @my_bot.command()
 async def baka():
+	paka_gen = random.randint(0, 100)
+	is_paka = False
+	if paka_gen < 5:
+		is_paka = True
+	
 	number_of_bakas = random.randint(1, 31)
 	str1 = "b"
+	if is_paka:
+		str1 = "p"
 	for baka in range(number_of_bakas - 1):
 		a1 = random.randint(1,11)
 		for a in range(a1):
@@ -113,7 +145,10 @@ async def baka():
 		a2 = random.randint(1,11)
 		for a in range(a2):
 			str1 += "a"
-		str1 += " b"
+		if is_paka:
+			str1 += " p"
+		else:
+			str1 += " b"
 	a1 = random.randint(1,11)
 	a2 = random.randint(1,11)
 	for a in range(a1):
@@ -223,6 +258,47 @@ async def man():
     for quote in quotes:
         await my_bot.say(quote)
 
+# Retard-related shit
+@my_bot.command()
+async def cv(*args):
+	final_val = 0
+	unit1 = float(args[0])
+	unit1_1 = str(args[1])
+	#unit2_1 = str(args[2])
+	# Parse the type of unit
+	u1 = []
+	u2 = []
+	si_units = [ "kg", "km", "ºC"]
+	retard_units = [ "lb", "mile", "ºF"] 
+	final_unit = "?"
+	if unit1_1 in si_units:
+		u1 = si_units
+		u2 = retard_units
+	else:
+		u1 = retard_units
+		u2 = si_units
+	if unit1_1 == "lb" or unit1_1 == "pound":
+		final_val = 0.45359237*unit1
+		final_unit = "kg"
+	if unit1_1 == "kg" or unit1_1 == "Kg":
+		final_val = unit1 / 0.45359237
+		final_unit = "lb"
+	if unit1_1 == "km":
+		final_val = unit1 / 1.609344
+		final_unit = "miles"
+	if unit1_1 == "mile":
+		final_val = 1.609344 * unit1
+		final_unit = "km"
+	if unit1_1 == "C" or unit1_1 == "ºC":
+		final_val = unit1 * (9/5) + 32
+		final_unit = "ºF"
+	if unit1_1 == "F" or unit1_1 == "ºF":
+		final_val = (-32 + unit1) / (9/5)
+		final_unit = "ºC"
+		
+	await my_bot.say(str(unit1) + " " + unit1_1 + " = " + str(final_val) + " " + final_unit)
+		
+	
 
 # Runs the bot with the token
 my_bot.run(get_token())
